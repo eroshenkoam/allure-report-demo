@@ -8,12 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 'allure-framework/allure1'
+          path: allure1
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '8'
-      - name: Setup Allure v1
+      - name: Setup Allure Report
         run: | 
           wget https://repo1.maven.org/maven2/ru/yandex/qatools/allure/allure-commandline/1.5.4/allure-commandline-1.5.4-standalone.zip
-          unzip allure-commandline-1.5.4-standalone.zip -d allure1
-          ./allure1/bin/allure help
+          unzip allure-commandline-1.5.4-standalone.zip -d allure-commandline
+          ./allure-commandline/bin/allure help
+      - name: Generate Allure Report
+        run: | 
+          ./allure-commandline/bin/allure generate ./allure1/allure-model/src/test/resources/allure-results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+           
