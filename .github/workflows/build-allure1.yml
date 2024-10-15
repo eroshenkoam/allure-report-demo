@@ -16,5 +16,4 @@ jobs:
         run: | 
           wget https://repo1.maven.org/maven2/ru/yandex/qatools/allure/allure-commandline/1.5.4/allure-commandline-1.5.4-standalone.zip
           unzip allure-commandline-1.5.4-standalone.zip -d allure1
-          ln -s allure1/bin/allure /usr/bin/allure1
-          allure1 help
+          ./allure1/bin/allure help
