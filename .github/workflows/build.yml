@@ -46,7 +46,7 @@ jobs:
           ./allure-2.30.0/bin/allure --help
       - name: Generate Allure Report
         run: | 
-          ./allure-2.30.0/bin/allure generate ./allure-results/v2 -o allure-report
+          ./allure-2.30.0/bin/allure generate ./allure-results/v1 -o allure-report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
@@ -74,7 +74,7 @@ jobs:
         working-directory: ./allure3
       - name: Generate Allure Report
         run: | 
-          yarn allure allure2 ../allure-results/v2 --single-file -o ../allure-report/backward > /dev/null 2>&1
+          yarn allure allure2 ../allure-results/v1 --single-file -o ../allure-report/backward > /dev/null 2>&1
           yarn allure allure-awesome ../allure-results/v2 --single-file -o ../allure-report/awesome > /dev/null 2>&1
         working-directory: ./allure3
       - name: Upload Allure Report
