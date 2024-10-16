@@ -76,6 +76,7 @@ jobs:
           yarn install > /dev/null 2>&1
           yarn build > /dev/null 2>&1
           yarn allure3 --help
+        working-directory: ./allure3
   aggregate: 
       runs-on: ubuntu-latest
       needs: [ build-allure-report-v1, build-allure-report-v2, build-allure-report-v3 ]
