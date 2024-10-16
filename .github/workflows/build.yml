@@ -69,6 +69,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'yarn'
       - name: Setup Allure Report
         run: | 
           yarn install > /dev/null 2>&1
