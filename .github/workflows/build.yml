@@ -63,8 +63,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: {{ secrets.ALLURE3_REPO }}
-          token: {{ secrets.ALLURE3_TOKEN }}
+          repository: ${{ secrets.ALLURE3_REPO }}
+          token: ${{ secrets.ALLURE3_TOKEN }}
           path: allure3
       - uses: actions/setup-node@v4
         with:
