@@ -1,0 +1,30 @@
+<qa:environment xmlns:qa="urn:model.commons.qatools.yandex.ru">
+    <id>2a54c4d7-7d79-4615-b80d-ffc1107016a1</id>
+    <name>Allure sample test pack</name>
+    <url>http://github/com/allure-framework/allure1</url>
+    <parameter>
+        <name>Browser</name>
+        <key>my.properties.browser</key>
+        <value>Firefox</value>
+    </parameter>
+    <parameter>
+        <name>GitHub</name>
+        <key>my.first.url</key>
+        <value>http://github.com</value>
+    </parameter>
+    <parameter>
+        <name>Allure home page</name>
+        <key>allure.home.page</key>
+        <value>http://allurereport.org</value>
+    </parameter>
+    <parameter>
+        <name>You can contribute</name>
+        <key>help.us</key>
+        <value>https://github.com/allure-framework/allure-core/blob/master/CONTRIBUTING.md</value>
+    </parameter>
+    <parameter>
+        <name>more.properties1</name>
+        <key>x.more.properties1</key>
+        <value>some-value1</value>
+    </parameter>
+</qa:environment>
