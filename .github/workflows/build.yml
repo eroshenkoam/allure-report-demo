@@ -1,4 +1,4 @@
-name: Build Allure1
+name: Build Allure Report
 
 on: 
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
         with:
           name: allure-report-v1
           path: allure-report/
-  build-allure-report-v1:
+  build-allure-report-v2:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
