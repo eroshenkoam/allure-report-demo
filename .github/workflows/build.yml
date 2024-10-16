@@ -70,6 +70,7 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
+          cache-dependency-path: 'allure3/yarn.lock'
       - name: Setup Allure Report
         run: | 
           yarn install > /dev/null 2>&1
