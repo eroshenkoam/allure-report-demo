@@ -37,6 +37,7 @@ jobs:
   build-allure-report-v2:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
@@ -58,6 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: ${{ secrets.ALLURE3_REPO }}
           token: ${{ secrets.ALLURE3_TOKEN }}
@@ -75,8 +77,8 @@ jobs:
         working-directory: ./allure3
       - name: Generate Allure Report
         run: | 
-          yarn allure allure2 ../allure-results -o ../allure-report/backward
-          yarn allure allure-awesome ../allure-results -o ../allure-report/awesome
+          yarn allure allure2 ../allure-results --single-file -o ../allure-report/backward
+          yarn allure allure-awesome ../allure-results --single-file -o ../allure-report/awesome
         working-directory: ./allure3
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
