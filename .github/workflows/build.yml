@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
         with:
           repository: 'allure-framework/allure1'
           path: allure1
@@ -39,7 +38,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
         with:
           repository: 'allure-framework/allure1'
           path: allure1
@@ -60,9 +58,25 @@ jobs:
         with:
           name: allure-report-v2
           path: allure-report/
+  build-allure-report-v3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: {{ secrets.ALLURE3_REPO }}
+          token: {{ secrets.ALLURE3_TOKEN }}
+          path: allure3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Setup Allure Report
+        run: | 
+          yarn install > /dev/null 2>&1
+          yarn build > /dev/null 2>&1
+          yarn allure3 --help
   aggregate: 
       runs-on: ubuntu-latest
-      needs: [ build-allure-report-v1, build-allure-report-v2 ]
+      needs: [ build-allure-report-v1, build-allure-report-v2, build-allure-report-v3 ]
       steps:
         - name: Download Allure Report V1
           uses: actions/download-artifact@v4
