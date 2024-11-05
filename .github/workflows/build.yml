@@ -74,8 +74,8 @@ jobs:
         working-directory: ./allure3
       - name: Generate Allure Report
         run: | 
-          yarn allure allure2 ../allure-results/v1 --single-file -o ../allure-report/backward > /dev/null 2>&1
-          yarn allure allure-awesome ../allure-results/v2 --single-file -o ../allure-report/awesome > /dev/null 2>&1
+          yarn allure allure2 ../allure-results/v1 --single-file -o ../allure-report > /dev/null 2>&1
+          yarn allure allure-awesome ../allure-results/v2 --single-file -o ../allure-report > /dev/null 2>&1
         working-directory: ./allure3
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
