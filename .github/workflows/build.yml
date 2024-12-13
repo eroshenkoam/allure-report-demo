@@ -56,27 +56,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: ${{ secrets.ALLURE3_REPO }}
-          token: ${{ secrets.ALLURE3_TOKEN }}
-          path: allure3
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
-          cache-dependency-path: 'allure3/yarn.lock'
-      - name: Setup Allure Report
-        run: | 
-          yarn install > /dev/null 2>&1
-          yarn build > /dev/null 2>&1
-          yarn allure --help
-        working-directory: ./allure3
       - name: Generate Allure Report
         run: | 
-          yarn allure allure2 ../allure-results/v1 --single-file -o ../allure-report > /dev/null 2>&1
-          yarn allure allure-awesome ../allure-results/v2 --single-file -o ../allure-report > /dev/null 2>&1
-        working-directory: ./allure3
+          npx allure classic allure-results/v1 --single-file -o allure-report
+          npx allure awesome allure-results/v2 --single-file -o allure-report
+          npx allure log allure-results/v2 > allure-report/report.log
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:

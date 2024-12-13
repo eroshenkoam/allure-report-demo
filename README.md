@@ -7,5 +7,6 @@
 
 ## Coming Soon
 
-* [Allure Report v3 Backward](https://eroshenkoam.github.io/allure-report-demo/v3/allure2)
-* [Allure Report v3 Awesome](https://eroshenkoam.github.io/allure-report-demo/v3/allure-awesome)
+* [Allure Report v3 Classic](https://eroshenkoam.github.io/allure-report-demo/v3/plugin-classic)
+* [Allure Report v3 Awesome](https://eroshenkoam.github.io/allure-report-demo/v3/plugin-awesome)
+* [Allure Report v3 Log](https://eroshenkoam.github.io/allure-report-demo/v3/report.log)
