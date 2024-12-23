@@ -1,0 +1,22 @@
+name: Realtime Allure Report
+
+on: 
+  push:
+    branch: 
+      "realtime"
+
+jobs:
+  build-allure-report-v1:
+    runs-on: ubuntu-latest
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8080:8080
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haythem/public-ip@v1.3
+        id: ip
+      - run: echo ${{ steps.ip.outputs.ipv4 }}
+      - run: sleep 1m
+   
