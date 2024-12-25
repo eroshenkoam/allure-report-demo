@@ -15,7 +15,7 @@ jobs:
           - 8080:8080
     steps:
       - uses: actions/checkout@v4
-      - uses: luisboto/ngrok-tunnel-action@<VERSION>
+      - uses: luisboto/ngrok-tunnel-action@v0.1.7
         with:
           ngrok_authtoken: ${{ secrets.NGROK_TOKEN }}
           tunnel_type: http
