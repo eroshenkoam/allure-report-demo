@@ -15,8 +15,12 @@ jobs:
           - 8080:8080
     steps:
       - uses: actions/checkout@v4
-      - uses: haythem/public-ip@v1.3
-        id: ip
-      - run: echo ${{ steps.ip.outputs.ipv4 }}
-      - run: sleep 1m
+      - uses: luisboto/ngrok-tunnel-action@<VERSION>
+        with:
+          ngrok_authtoken: ${{ secrets.NGROK_TOKEN }}
+          tunnel_type: http
+          port: 8080
+          timeout: 1h
+          save_url_to_filename: url.md
+      - run: cat url.md && sleep 1m
    
