@@ -15,12 +15,11 @@ jobs:
           - 8080:8080
     steps:
       - uses: actions/checkout@v4
-      - uses: luisboto/ngrok-tunnel-action@v0.1.7
+      - uses: actions/setup-node@v4
         with:
-          ngrok_authtoken: ${{ secrets.NGROK_TOKEN }}
-          tunnel_type: http
-          port: 8080
-          timeout: 1h
-          save_url_to_filename: url.md
-      - run: cat url.md && sleep 1m
-   
+          node-version: 20
+      - run: | 
+          curl https://loca.lt/mytunnelpassword
+          npm install -g localtunnel
+          lt --port 8080 &
+          sleep 1m
