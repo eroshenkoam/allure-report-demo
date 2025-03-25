@@ -69,9 +69,26 @@ jobs:
         with:
           name: allure-report-v3
           path: allure-report/
+  build-allure-report-xcresults:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          repository: allure-framework/allure3
+          path: allure3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          npx allure awesome allure3/packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-xcresults
+          path: allure-report/
   aggregate: 
       runs-on: ubuntu-latest
-      needs: [ build-allure-report-v1, build-allure-report-v2, build-allure-report-v3 ]
+      needs: [ build-allure-report-v1, build-allure-report-v2, build-allure-report-v3, build-allure-report-xcresults ]
       steps:
         - name: Download Allure Report V1
           uses: actions/download-artifact@v4
@@ -83,11 +100,16 @@ jobs:
           with:
             name: allure-report-v2
             path: allure-report/v2
-        - name: Download Allure Report V2
+        - name: Download Allure Report V3
           uses: actions/download-artifact@v4
           with:
             name: allure-report-v3
             path: allure-report/v3
+        - name: Download Allure Report XCResults
+          uses: actions/download-artifact@v4
+          with:
+            name: allure-report-xcresults
+            path: allure-report/xcresults
         - name: Upload Allure Report
           id: deployment
           uses: actions/upload-pages-artifact@v3
