@@ -70,7 +70,7 @@ jobs:
           name: allure-report-v3
           path: allure-report/
   build-allure-report-xcresults:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with: 
