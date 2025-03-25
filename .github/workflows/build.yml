@@ -85,7 +85,7 @@ jobs:
           sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           yarn install 
           yarn build
-          yarn allure awesome allure3/packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
+          yarn allure awesome packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
