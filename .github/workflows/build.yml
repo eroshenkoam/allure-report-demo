@@ -1,6 +1,9 @@
 name: Build Allure Report
 
 on: 
+  push: 
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
@@ -80,9 +83,7 @@ jobs:
         with:
           node-version: 20
       - run: |
-          ls -al /Applications
-          ls -al /Applications/Xcode.app || true
-          sudo xcode-select -s /Applications/Xcode.app
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           npx allure awesome allure3/packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
