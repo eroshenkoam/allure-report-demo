@@ -79,9 +79,7 @@ jobs:
         with:
           node-version: 20
       - run: |
-          yarn install
-          yarn build
-          yarn allure awesome packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult -o allure-report
+          npx allure awesome packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
@@ -89,7 +87,7 @@ jobs:
           path: allure-report/
   aggregate: 
       runs-on: ubuntu-latest
-      needs: [ build-allure-report-v1, build-allure-report-v2, build-allure-report-v3 ]
+      needs: [ build-allure-report-v1, build-allure-report-v2, build-allure-report-v3, build-allure-report-xcresults ]
       steps:
         - name: Download Allure Report V1
           uses: actions/download-artifact@v4
