@@ -78,13 +78,14 @@ jobs:
       - uses: actions/checkout@v4
         with: 
           repository: allure-framework/allure3
-          path: allure3
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: |
           sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
-          npx allure awesome allure3/packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
+          yarn install 
+          yarn build
+          yarn allure awesome allure3/packages/reader/test/resources/xcresultdata/parameters/twoParameters.xcresult --single-file -o allure-report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
